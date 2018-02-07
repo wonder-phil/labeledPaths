@@ -885,6 +885,130 @@ public class simpleDeepWordsTests {
 		}	
 	}
 	
+	
+	/*
+	 * n = 9: ( () () () )
+	 * 
+	 * Uses one invocation of flatDyck
+	 * 
+	 */
+	//@Ignore
+	@Test
+	public void basicSemiDyck3PlusGraphTest3() {
+		
+		BigFraction one = new BigFraction(1,1);
+		
+		int n = 9;	
+		int[][] graphMatrix = Graphs.basicSemiDyck3PlusGraph(1,n);
+		
+		FieldMatrices fm = new FieldMatrices();
+		AncillaryFunctions af = new AncillaryFunctions();
+		PGB_Algorithm pgb_a = new PGB_Algorithm();
+		
+		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
+		FieldMatrix<BigFraction> saveInput = fm.copyFieldMatrix(graphMatrix, n);
+		
+		af.updateFieldMatrix(P1, n);
+		af.updateFieldMatrix(saveInput, n);
+		
+		FieldMatrix<BigFraction> output = pgb_a.flatDyck(P1,n);
+	
+		
+		FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
+		
+		expectedOutput.setEntry(0, n-1, one);
+		expectedOutput.setEntry(1, n-2, one);
+		
+		for (int i=1; i < n-1; i += 1){
+			for (int j=i; j < n-1; j += 2) {
+				if (j > i) {
+					expectedOutput.setEntry(i, j, one);	
+				}
+			}
+		}
+		
+		for (int i = 0; i < n; i++){
+			for (int j = 0; j < n; j++) {
+				if (output.getEntry(i, j).compareTo(expectedOutput.getEntry(i, j)) != 0 ) {
+					System.out.println(n + ": " + i + "  " + j);
+					af.printFieldMatrix(output, n);
+					System.out.println("---expected--output---");
+					af.printFieldMatrix(expectedOutput, n);
+					
+					fail("Not Equal: " + i + " " + j);
+				}
+			}
+		}	
+	}
+	
+	/*
+	 * FAIL TEST
+	 * 
+	 * n = 11: ( () () () () )
+	 * 
+	 * Uses one invocation of flatDyck
+	 * 
+	 * NOTE: This test shows that the flatDyck algorithm FAILS given this case!
+	 * 
+	 */
+	//@Ignore
+	@Test
+	public void basicSemiDyck3PlusGraphTest4() {
+		
+		BigFraction one = new BigFraction(1,1);
+		
+		int n = 11;	
+		int[][] graphMatrix = Graphs.basicSemiDyck3PlusGraph(1,n);
+		
+		FieldMatrices fm = new FieldMatrices();
+		AncillaryFunctions af = new AncillaryFunctions();
+		PGB_Algorithm pgb_a = new PGB_Algorithm();
+		
+		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
+		FieldMatrix<BigFraction> saveInput = fm.copyFieldMatrix(graphMatrix, n);
+		
+		af.updateFieldMatrix(P1, n);
+		af.updateFieldMatrix(saveInput, n);
+		
+		FieldMatrix<BigFraction> output = pgb_a.flatDyck(P1,n);
+	
+		
+		FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
+		
+		/*
+		 * FAIL TEST
+		 * 
+		 * The correct exact 0 path does have M[0,n-1] == 1 !!!
+		 * 
+		 * expectedOutput.setEntry(0, n-1, one);
+		 * 
+		 * FAIL TEST
+		 */
+		
+		expectedOutput.setEntry(1, n-2, one);
+		
+		for (int i=1; i < n-1; i += 1){
+			for (int j=i; j < n-1; j += 2) {
+				if (j > i) {
+					expectedOutput.setEntry(i, j, one);	
+				}
+			}
+		}
+		
+		for (int i = 0; i < n; i++){
+			for (int j = 0; j < n; j++) {
+				if (output.getEntry(i, j).compareTo(expectedOutput.getEntry(i, j)) != 0 ) {
+					System.out.println(n + ": " + i + "  " + j);
+					af.printFieldMatrix(output, n);
+					System.out.println("---expected--output---");
+					af.printFieldMatrix(expectedOutput, n);
+					
+					fail("Not Equal: " + i + " " + j);
+				}
+			}
+		}	
+	}
+	
 	//@Ignore
 	@Test
 	public void semiDyck3GraphTest2() {
