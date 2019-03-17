@@ -389,7 +389,7 @@ public class PGB_Algorithm {
 	public static FieldMatrix<BigFraction> get_PM_Edges(FieldMatrix<BigFraction> allZeroEdgesMatrix, FieldMatrix<BigFraction> origionalInput, int n) {
 		FieldMatrices fm = new FieldMatrices();
 		AncillaryFunctions af = new AncillaryFunctions();
-		Coefficients cs = new Coefficients();
+		Coefficients cs = new Coefficients();                                                                // UNNESSARY INSTANCE
 		
 		FieldMatrix<BigFraction> nonCyclePMOneAndZero = MatrixUtils.createFieldMatrix(BigFractionField.getInstance(), n, n );
 		BigFraction AGMY_zero =  new BigFraction(1,1);
