@@ -3,7 +3,7 @@
  * -Need to split this and implement this over to BaseGraph.java and ComplexGraph.java
 */
 package g;
-import java.util.Map;
+import java.util.Map; 
 import java.util.HashMap;
 public class DemoOODgraph {
 	Map<String,Integer> typemap; 
