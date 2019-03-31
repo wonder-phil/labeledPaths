@@ -5,38 +5,32 @@
  */
 package g;
 
-public class BaseGraph {
+public abstract class BaseGraph {
 	private int half;
-	private int length;
-	private int[][] matrix; 
+	private int totalNodes; //numvert, totalNodes
+	private int[][] matrix;
 	
 	//constructor automatically fills graphs with zeroes
 	public BaseGraph(int n) {
-		length = n; 
+		totalNodes = n; 
 		half = n/2;
 		matrix = new int[n][n];
-		
-		//fillgraphmatric - virtual function in abstract; technically fills by ZeroMatrix
-		for (int i = 0; i < n; i++){
-			for (int j = 0; j < n; j++){
-				matrix[i][j] = 0;
-			}
-		}
 	}
 	
-	public int getLength() {  //synonymous with n  
-		return this.length; 
+	public int getTotalNodes() {  //synonymous with n  
+		return this.totalNodes; 
 	}
 	
 	//this is the function that the child class will override
-	public void buildGraph() {   
-		int n = getLength(); 
+	public void zeromatrix() {
+		int n = getTotalNodes(); 
 		for (int i = 0; i < n; i++){
 			for (int j = 0; j < n; j++){
 				this.matrix[i][j] = 0;
 			}
 		}
 	}
+	public abstract void buildGraph();
 	
 	public int[][] getMatrix() {  
 		return this.matrix; 

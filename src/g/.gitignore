@@ -7,3 +7,7 @@
 /DemoOODgraph.class
 /BaseGraph.class
 /ComplexGraph.class
+/LineGraph.class
+/GraphIF.class
+/graph.class
+/bigLittleGraph.class
