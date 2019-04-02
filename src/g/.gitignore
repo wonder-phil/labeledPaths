@@ -11,3 +11,6 @@
 /GraphIF.class
 /graph.class
 /bigLittleGraph.class
+/SimpleRELineGraph.class
+/BooleanLineGraph.class
+/BarbellGraph.class

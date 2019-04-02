@@ -14,7 +14,7 @@ public class bigLittleGraph extends BaseGraph{
 	@Override
 	public void buildGraph() {
 		// TODO Auto-generated method stub
-		int n = this.getLength();
+		int n = this.getTotalNodes();
 		if (n%2 == 0) {
 			System.err.println("n should be odd!");
 			System.out.println();

@@ -35,4 +35,13 @@ public abstract class BaseGraph {
 	public int[][] getMatrix() {  
 		return this.matrix; 
 	}
+	public void printMatrix() {
+		int n = this.getTotalNodes();
+		for (int i = 0; i < n; i++){
+			for (int j = 0; j < n; j++){
+				System.out.print(matrix[i][j]+ " ");
+			}
+			System.out.println();
+		}
+	}
 }

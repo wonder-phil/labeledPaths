@@ -1,11 +1,11 @@
 package g;
 
-public class LineGraph extends BaseGraph {
+public class BooleanLineGraph extends BaseGraph{
 
-	public LineGraph(int n) {
+	public BooleanLineGraph(int n) {
 		super(n);
-		
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
@@ -19,22 +19,18 @@ public class LineGraph extends BaseGraph {
 			System.exit(-1);
 		}
 		
-		int[][] matrix = new int[n][n];
+		int[][] matrix = this.getMatrix();
+		//zeroMatrix(matrix,n, Integer.MAX_VALUE);
 		
 		int half = n/2;
 		
 		for(int i =0; i < n; i++) {
 			for(int j =0; j < n; j++) {
 				if(j-1 == i) {
-					if (i< half) {
-						matrix[i][j] = 1; 
-					} else {
-						matrix[i][j] = -1;
-					}
+					matrix[i][j] = 1; 
 				}
 			}
 		}
-		
 	}
 
 }
