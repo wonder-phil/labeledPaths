@@ -1,10 +1,9 @@
 package g;
 
-public class LineGraph extends BaseGraph {
+public class CycleGraphXX extends BaseGraph {
 
-	public LineGraph(int n) {
+	public CycleGraphXX(int n) {
 		super(n);
-		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -12,14 +11,15 @@ public class LineGraph extends BaseGraph {
 	public void buildGraph() {
 		// TODO Auto-generated method stub
 		int n = this.getTotalNodes();
-		if (n%2 == 0) {
-			System.err.println("n should be odd!");
+		if (n%2 == 1) {
+			System.err.println("n should be even!");
 			System.out.println();
 			
 			System.exit(-1);
 		}
-		
+		this.zeromatrix();
 		int[][] matrix = this.getMatrix();
+		//zeroMatrix(matrix,n);
 		
 		int half = n/2;
 		
@@ -35,6 +35,9 @@ public class LineGraph extends BaseGraph {
 			}
 		}
 		
+		matrix[n-1][0]= -1;
+		
+		//printMatrix(matrix,n);
 	}
 
 }

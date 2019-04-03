@@ -2,16 +2,14 @@ package g;
 
 public class ComplexGraph extends BaseGraph {
 
-	
 	public ComplexGraph(int n) {
 		super(n);
 	}
 	
-	
 	//overriding fill method to specialize the way the graph is filled
 	@Override
 	public void buildGraph() {
-		int n = this.getLength();
+		int n = this.getTotalNodes();
 		int[][] matrix = new int[n][n];
 		//zeroMatrix(matrix,n, Integer.MAX_VALUE);
 		

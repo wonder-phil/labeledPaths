@@ -22,7 +22,7 @@ public class bigLittleGraph extends BaseGraph{
 			System.exit(-1);
 		}
 		
-		int[][] matrix = new int[n][n];
+		int[][] matrix = this.getMatrix();
 		
 		int half = bigBumpHeight/2;
 		

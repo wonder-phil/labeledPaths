@@ -21,7 +21,6 @@ public class SimpleRELineGraph extends BaseGraph {
 		}
 		matrix[n-1][n-1] = -1;
 	
-		
 	}
 
 }

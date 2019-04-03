@@ -1,10 +1,9 @@
 package g;
 
-public class LineGraph extends BaseGraph {
+public class AlternatingLineGraph extends BaseGraph {
 
-	public LineGraph(int n) {
+	public AlternatingLineGraph(int n) {
 		super(n);
-		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,14 +18,16 @@ public class LineGraph extends BaseGraph {
 			System.exit(-1);
 		}
 		
+		this.zeromatrix();
 		int[][] matrix = this.getMatrix();
+		//zeroMatrix(matrix,n);
 		
 		int half = n/2;
 		
 		for(int i =0; i < n; i++) {
 			for(int j =0; j < n; j++) {
 				if(j-1 == i) {
-					if (i< half) {
+					if(i % 2 == 0) {
 						matrix[i][j] = 1; 
 					} else {
 						matrix[i][j] = -1;

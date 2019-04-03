@@ -14,3 +14,14 @@
 /SimpleRELineGraph.class
 /BooleanLineGraph.class
 /BarbellGraph.class
+/MountainGraph.class
+/ThreeLoopGraph.class
+/AlternatingLineGraph.class
+/NestedPairsLinearGraph.class
+/AlternatingCycleGraph.class
+/NestedTriplesLinearGraph.class
+/TrivialSelfCycleGraph.class
+/GeometricNestedLinearGraph.class
+/CycleGraph.class
+/CycleGraphXX.class
+/BasicCycleGraph.class
