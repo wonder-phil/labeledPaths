@@ -100,6 +100,33 @@ public class FieldMatrices {
 		}
 		return M;
 	}
+//------------------------------------------------------------------
+public static FieldMatrix<BigFraction> copyFieldMatrix2(int matrix[][], int n) {
+		
+		FieldMatrix<BigFraction> M = MatrixUtils.createFieldMatrix(BigFractionField.getInstance(), n, n );
+		BigFraction zero =  new BigFraction(1,1);
+		BigFraction one =  new BigFraction(3*(n+1),1);
+		BigFraction minusOne =  new BigFraction(1,3*(n+1));
+		
+		for (int i=0; i < n; i++) {
+			for(int j=0; j < n; j++){
+				
+				if(0 == matrix[i][j]) {
+					M.setEntry(i, j, zero);
+				}
+				
+				if (-1 == matrix[i][j]) {
+					M.setEntry(i, j, minusOne);
+				} 
+				
+				if (1 == matrix[i][j]) {
+					M.setEntry(i, j, one);
+				} 
+			}
+		}
+		return M;
+	}
+//------------------------------------------------------------------	
 		
 		/*
 		 * 

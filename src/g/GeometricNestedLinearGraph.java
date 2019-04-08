@@ -23,7 +23,7 @@ public class GeometricNestedLinearGraph extends BaseGraph{
 			System.exit(-1);
 		}
 		
-		this.zeromatrix();
+		zeromatrix();
 		int[][] matrix = this.getMatrix();
 		//zeroMatrix(matrix,n);
 		
