@@ -11,6 +11,12 @@ import g.FieldMatrices;
 import g.Graphs;
 import g.PGB_Algorithm;
 import g.Coefficients;
+import g.BooleanLineGraph;
+import g.LineGraph;
+import g.AlternatingCycleGraph;
+import g.NestedPairsLinearGraph;
+import g.NestedTriplesLinearGraph;
+import g.GeometricNestedLinearGraph;
 
 public class flatSemiDyckTests {
 
@@ -176,7 +182,11 @@ public class flatSemiDyckTests {
 		
 		
 		for (int n =3; n < 16; n += 2) {
-			int[][] graphMatrix = Graphs.BooleanLineGraph(n);
+			//int[][] graphMatrix = Graphs.BooleanLineGraph(n);
+			BooleanLineGraph booleanlinegraph = new BooleanLineGraph(n);
+			booleanlinegraph.buildGraph();
+			int[][] graphMatrix = booleanlinegraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> identity = fm.getIdentity(n);
 			
@@ -205,7 +215,7 @@ public class flatSemiDyckTests {
 		
 		
 		for (int n =3; n < 16; n += 2) {
-			int[][] graphMatrix = Graphs.	nonSemiDyckGraph(n);
+			int[][] graphMatrix = Graphs.nonSemiDyckGraph(n);
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> identity = fm.getIdentity(n);
 			
@@ -243,7 +253,11 @@ public class flatSemiDyckTests {
 		BigFraction onePath = new BigFraction(1,1);
 		
 		for (int n =3; n < 16; n += 2) {
-			int[][] graphMatrix = Graphs.lineGraph(n);
+			//int[][] graphMatrix = Graphs.lineGraph(n);
+			LineGraph linegraph = new LineGraph(n);
+			linegraph.buildGraph();
+			int[][] graphMatrix = linegraph.getMatrix(); 
+			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 			
@@ -283,7 +297,11 @@ public class flatSemiDyckTests {
 		
 		for (int n =4; n < 20; n += 2) {
 			
-			int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+			//int[][] graphMatrix = Graphs.alternatingCycleGraph(n); 
+			AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+			alternatingcyclegraph.buildGraph();
+			int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 			
@@ -317,7 +335,11 @@ public class flatSemiDyckTests {
 		
 		for (int n =9; n < 40; n += 8) {
 			
-			int[][] graphMatrix = Graphs.nestedPairsLinearGraph(n);
+			//int[][] graphMatrix = Graphs.nestedPairsLinearGraph(n);
+			NestedPairsLinearGraph nestedpairslineargraph = new NestedPairsLinearGraph(n);
+			nestedpairslineargraph.buildGraph();
+			int[][] graphMatrix = nestedpairslineargraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 			
@@ -368,7 +390,11 @@ public class flatSemiDyckTests {
 		
 		for (int n =13; n < 52; n += 12) {
 			
-			int[][] graphMatrix = Graphs.nestedTriplesLinearGraph(n);
+			//int[][] graphMatrix = Graphs.nestedTriplesLinearGraph(n);
+			NestedTriplesLinearGraph nestedtripleslineargraph = new NestedTriplesLinearGraph(n);
+			nestedtripleslineargraph.buildGraph();
+			int[][] graphMatrix = nestedtripleslineargraph.getMatrix(); 
+						
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 			
@@ -417,7 +443,11 @@ public class flatSemiDyckTests {
 		BigFraction negEdge = cs.negEdge(n);
 		BigFraction posEdge = cs.posEdge(n);
 		
-		int[][] graphMatrix = Graphs.geometricNestedLinearGraph(n);
+		//int[][] graphMatrix = Graphs.geometricNestedLinearGraph(n);
+		GeometricNestedLinearGraph geometricnestedlineargraph = new GeometricNestedLinearGraph(n);
+		geometricnestedlineargraph.buildGraph();
+		int[][] graphMatrix = geometricnestedlineargraph.getMatrix(); 
+		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 		
@@ -458,7 +488,11 @@ public class flatSemiDyckTests {
 		
 		BigFraction one = new BigFraction(1,1);
 		
-		int[][] graphMatrix = Graphs.geometricNestedLinearGraph(n);
+		//int[][] graphMatrix = Graphs.geometricNestedLinearGraph(n);
+		GeometricNestedLinearGraph geometricnestedlineargraph = new GeometricNestedLinearGraph(n);
+		geometricnestedlineargraph.buildGraph();
+		int[][] graphMatrix = geometricnestedlineargraph.getMatrix(); 
+		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 		
@@ -506,7 +540,11 @@ public class flatSemiDyckTests {
 		BigFraction one = new BigFraction(1,1);
 		
 		
-		int[][] graphMatrix = Graphs.geometricNestedLinearGraph(n);
+		//int[][] graphMatrix = Graphs.geometricNestedLinearGraph(n);
+		GeometricNestedLinearGraph geometricnestedlineargraph = new GeometricNestedLinearGraph(n);
+		geometricnestedlineargraph.buildGraph();
+		int[][] graphMatrix = geometricnestedlineargraph.getMatrix(); 
+		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutput = fm.getIdentity(n);
 		
@@ -537,9 +575,4 @@ public class flatSemiDyckTests {
 			}
 		}	
 	}
-	
-
-	
-
-
 }

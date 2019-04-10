@@ -60,7 +60,10 @@ public class mountainTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 
 		
-		int[][] graphMatrix = Graphs.mountainkGraph(n);
+		//int[][] graphMatrix = Graphs.mountainkGraph(n);
+		MountainGraph mountainGraph = new MountainGraph(n);
+		mountainGraph.buildGraph();
+		int[][] graphMatrix = mountainGraph.getMatrix();
 		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		af.updateFieldMatrix(P1, n);
@@ -86,7 +89,10 @@ public class mountainTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 
 		
-		int[][] graphMatrix = Graphs.mountainkGraph(n);
+		//int[][] graphMatrix = Graphs.mountainkGraph(n);
+		MountainGraph mountainGraph = new MountainGraph(n);
+		mountainGraph.buildGraph();
+		int[][] graphMatrix = mountainGraph.getMatrix();
 		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		af.updateFieldMatrix(P1, n);

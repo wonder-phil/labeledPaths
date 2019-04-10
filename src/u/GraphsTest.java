@@ -12,6 +12,10 @@ import g.AncillaryFunctions;
 import g.FieldMatrices;
 import g.Graphs;
 import g.PGB_Algorithm;
+import g.CycleGraph;
+import g.SimpleRELineGraph;
+import g.AlternatingLineGraph;
+import g.MountainGraph;
 
 public class GraphsTest {
 
@@ -24,7 +28,11 @@ public class GraphsTest {
 		BigFraction minusOne = new BigFraction(1,3*(n+1));
 		AncillaryFunctions af = new AncillaryFunctions();
 		
-		int[][] graphMatrix = Graphs.cycleGraph(n);
+		//int[][] graphMatrix = Graphs.cycleGraph(n);
+		CycleGraph cyclegraph = new CycleGraph(n);
+		cyclegraph.buildGraph();
+		int [][] graphMatrix = cyclegraph.getMatrix();
+		
 		
 		FieldMatrix<BigFraction> expectedOutputMatrix =  MatrixUtils.createFieldMatrix(BigFractionField.getInstance(), n, n );
 		//af.setFieldMatrix(expectedOutputMatrix,n,1);
@@ -58,7 +66,10 @@ public class GraphsTest {
 	@Test
 	public void simpleRELineGraphTest1() {
 		int n = 10;
-		int[][] graphMatrix = Graphs.simpleRELineGraph(n);
+		//int[][] graphMatrix = Graphs.simpleRELineGraph(n);
+		SimpleRELineGraph simplerellinegraph = new SimpleRELineGraph(n);
+		simplerellinegraph.buildGraph();
+		int[][] graphMatrix = simplerellinegraph.getMatrix();
 		
 		int[][] expectedGraphMatrix = new int[n][n];
 		
@@ -205,7 +216,10 @@ public class GraphsTest {
 	@Test
 	public void alternatingLineGraphTest1() {
 		int n = 9;
-		int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+		alternatinglinegraph.buildGraph();
+		int[][] graphMatrix = alternatinglinegraph.getMatrix();
 		
 		int[][] expectedOutput;
 		expectedOutput = new int[n][];
@@ -233,7 +247,10 @@ public class GraphsTest {
 		
 		for (int n = 11; n < 20; n += 2) {
 		
-			int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+			//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+			AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+			alternatinglinegraph.buildGraph();
+			int[][] graphMatrix = alternatinglinegraph.getMatrix();
 			
 			int[][] expectedOutput;
 			expectedOutput = new int[n][];
@@ -422,7 +439,10 @@ public class GraphsTest {
 		
 		int n = 11;
 		
-		int[][] matrix = Graphs.mountainkGraph(n);
+		//int[][] matrix = Graphs.mountainkGraph(n);
+		MountainGraph mountaingraph = new MountainGraph(n);
+		mountaingraph.buildGraph();
+		int[][] matrix = mountaingraph.getMatrix();
 		
 		int[][] expectedOutput = {
 				{ 0,1,0,0,0,0,0,0,0,0,0 },
@@ -453,7 +473,10 @@ public class GraphsTest {
 		
 		int n = 17;
 		
-		int[][] matrix = Graphs.mountainkGraph(n);
+		//int[][] matrix = Graphs.mountainkGraph(n);
+		MountainGraph mountaingraph = new MountainGraph(n);
+		mountaingraph.buildGraph();
+		int[][] matrix = mountaingraph.getMatrix();	
 		
 		int[][] expectedOutput = {
 		{ 0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },

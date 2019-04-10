@@ -14,6 +14,14 @@ import g.FieldMatrices;
 import g.Graphs;
 import g.PGB_Algorithm;
 import g.Coefficients;
+import g.BarbellGraph;
+import g.SimpleRELineGraph;
+import g.LineGraph;
+import g.AlternatingLineGraph;
+import g.AlternatingCycleGraph;
+import g.CycleGraph;
+import g.ThreeLoopGraph;
+import g.BasicCycleGraph;
 
 public class PGB_AlgorithmTests {
 	
@@ -24,7 +32,10 @@ public class PGB_AlgorithmTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 		FieldMatrices fm = new FieldMatrices();
 		
-		int[][] graphMatrix = Graphs.barbellGraph(n);
+		//int[][] graphMatrix = Graphs.barbellGraph(n);
+		BarbellGraph barbellgraph = new BarbellGraph(n);
+		barbellgraph.buildGraph();
+		int[][] graphMatrix = barbellgraph.getMatrix();
 		
 		/*
 		af.printIntMatrix(graphMatrix, n);
@@ -74,7 +85,11 @@ public class PGB_AlgorithmTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 		FieldMatrices fm = new FieldMatrices();
 		
-		int[][] graphMatrix = Graphs.simpleRELineGraph(n);
+		//int[][] graphMatrix = Graphs.simpleRELineGraph(n);
+		SimpleRELineGraph simplerellinegraph = new SimpleRELineGraph(n);
+		simplerellinegraph.buildGraph();
+		int[][] graphMatrix = simplerellinegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -111,7 +126,11 @@ public class PGB_AlgorithmTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 		FieldMatrices fm = new FieldMatrices();
 		
-		int[][] graphMatrix = Graphs.lineGraph(n);
+		//int[][] graphMatrix = Graphs.lineGraph(n);
+		LineGraph linegraph = new LineGraph(n);
+		linegraph.buildGraph();
+		int[][] graphMatrix = linegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -153,7 +172,11 @@ public class PGB_AlgorithmTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 		FieldMatrices fm = new FieldMatrices();
 		
-		int[][] graphMatrix = Graphs.lineGraph(n);
+		//int[][] graphMatrix = Graphs.lineGraph(n);
+		LineGraph linegraph = new LineGraph(n);
+		linegraph.buildGraph();
+		int[][] graphMatrix = linegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -191,7 +214,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		for (int n = 3; n < 50; n += 2) {
-			int[][] graphMatrix = Graphs.lineGraph(n);
+			//int[][] graphMatrix = Graphs.lineGraph(n);
+			LineGraph linegraph = new LineGraph(n);
+			linegraph.buildGraph();
+			int[][] graphMatrix = linegraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -224,7 +251,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 3;
-		int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+		alternatinglinegraph.buildGraph();
+		int[][] graphMatrix = alternatinglinegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -260,7 +291,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 5;
-		int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+		alternatinglinegraph.buildGraph();
+		int[][] graphMatrix = alternatinglinegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -301,7 +336,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		for (int n = 3; n < 50; n += 2) {
-			int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+			//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+			AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+			alternatinglinegraph.buildGraph();
+			int[][] graphMatrix = alternatinglinegraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -330,9 +369,7 @@ public class PGB_AlgorithmTests {
 		}
 	}
 	
-	
-	
-	
+		
 	@Test
 	public void alternatingCycleGraphTest1() {
 		
@@ -341,7 +378,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 4;
-		int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+		alternatingcyclegraph.buildGraph();
+		int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -380,7 +421,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 8;
-		int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+		alternatingcyclegraph.buildGraph();
+		int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+				
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -420,7 +465,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 12;
-		int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+		alternatingcyclegraph.buildGraph();
+		int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -460,7 +509,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 14;
-		int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+		alternatingcyclegraph.buildGraph();
+		int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -500,7 +553,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 16;
-		int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+		alternatingcyclegraph.buildGraph();
+		int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -540,7 +597,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n = 32;
-		int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+		AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+		alternatingcyclegraph.buildGraph();
+		int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -581,7 +642,11 @@ public class PGB_AlgorithmTests {
 		
 		for (int n = 16; n < 20; n += 2){
 				
-			int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+			//int[][] graphMatrix = Graphs.alternatingCycleGraph(n);
+			AlternatingCycleGraph alternatingcyclegraph = new AlternatingCycleGraph(n);
+			alternatingcyclegraph.buildGraph();
+			int[][] graphMatrix = alternatingcyclegraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -622,7 +687,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n=4; 
-		int[][] graphMatrix = Graphs.cycleGraph(n);
+		//int[][] graphMatrix = Graphs.cycleGraph(n);
+		CycleGraph cyclegraph = new CycleGraph(n);
+		cyclegraph.buildGraph();
+		int[][] graphMatrix = cyclegraph.getMatrix();
+				
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -659,7 +728,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n=6; 
-		int[][] graphMatrix = Graphs.cycleGraph(n);
+		//int[][] graphMatrix = Graphs.cycleGraph(n);
+		CycleGraph cyclegraph = new CycleGraph(n);
+		cyclegraph.buildGraph();
+		int[][] graphMatrix = cyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -691,7 +764,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n=8; 
-		int[][] graphMatrix = Graphs.cycleGraph(n);
+		//int[][] graphMatrix = Graphs.cycleGraph(n);
+		CycleGraph cyclegraph = new CycleGraph(n);
+		cyclegraph.buildGraph();
+		int[][] graphMatrix = cyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -728,7 +805,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		int n=10; 
-		int[][] graphMatrix = Graphs.cycleGraph(n);
+		//int[][] graphMatrix = Graphs.cycleGraph(n);
+		CycleGraph cyclegraph = new CycleGraph(n);
+		cyclegraph.buildGraph();
+		int[][] graphMatrix = cyclegraph.getMatrix();
+		
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -766,7 +847,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		
 		for (int n=4; n < 12; n += 2){
-			int[][] graphMatrix = Graphs.cycleGraph(n);
+			//int[][] graphMatrix = Graphs.cycleGraph(n);
+			CycleGraph cyclegraph = new CycleGraph(n);
+			cyclegraph.buildGraph();
+			int[][] graphMatrix = cyclegraph.getMatrix();
+			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 		
@@ -805,7 +890,11 @@ public class PGB_AlgorithmTests {
 		//
 		// This is a fixed size graph with n=11 nodes
 		//
-		int[][] graphMatrix = Graphs.threeLoopGraph(n);
+		//int[][] graphMatrix = Graphs.threeLoopGraph(n);
+		ThreeLoopGraph threeloopgraph = new ThreeLoopGraph(n);
+		threeloopgraph.buildGraph();
+		int[][] graphMatrix = threeloopgraph.getMatrix();
+				
 		FieldMatrix<BigFraction> P1 = fm.altCopyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
 	
@@ -846,8 +935,15 @@ public class PGB_AlgorithmTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 		AncillaryFunctions af = new AncillaryFunctions();
 		
-		int[][] matrixNegativeEdges = Graphs.basicCycleGraph(-1,n);
-		int[][] matrixPositiveEdges = Graphs.basicCycleGraph(+1,n);
+		//int[][] matrixNegativeEdges = Graphs.basicCycleGraph(-1,n);
+		BasicCycleGraph basiccyclegraph1 = new BasicCycleGraph(-1,n);
+		basiccyclegraph1.buildGraph();
+		int[][] matrixNegativeEdges = basiccyclegraph1.getMatrix();
+		
+		//int[][] matrixPositiveEdges = Graphs.basicCycleGraph(+1,n);
+		BasicCycleGraph basiccyclegraph2 = new BasicCycleGraph(+1,n);
+		basiccyclegraph2.buildGraph();
+		int[][] matrixPositiveEdges = basiccyclegraph2.getMatrix();
 		
 		FieldMatrices fm = new FieldMatrices();
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
@@ -903,8 +999,15 @@ public class PGB_AlgorithmTests {
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
 		AncillaryFunctions af = new AncillaryFunctions();
 		
-		int[][] matrixNegativeEdges = Graphs.basicCycleGraph(-1,n);
-		int[][] matrixPositiveEdges = Graphs.basicCycleGraph(+1,n);
+		//int[][] matrixNegativeEdges = Graphs.basicCycleGraph(-1,n);
+		BasicCycleGraph basiccyclegraph1 = new BasicCycleGraph(-1,n);
+		basiccyclegraph1.buildGraph();
+		int[][] matrixNegativeEdges = basiccyclegraph1.getMatrix();
+		
+		//int[][] matrixPositiveEdges = Graphs.basicCycleGraph(+1,n);
+		BasicCycleGraph basiccyclegraph2 = new BasicCycleGraph(+1,n);
+		basiccyclegraph2.buildGraph();
+		int[][] matrixPositiveEdges = basiccyclegraph2.getMatrix();
 		
 		FieldMatrices fm = new FieldMatrices();
 		FieldMatrix<BigFraction> expectedOutputMatrix = fm.getIdentity(n);
@@ -961,7 +1064,11 @@ public class PGB_AlgorithmTests {
 		FieldMatrices fm = new FieldMatrices();
 		AncillaryFunctions af = new AncillaryFunctions();
 		
-		int[][] graphMatrix = Graphs.cycleGraph(n);
+		//int[][] graphMatrix = Graphs.cycleGraph(n);
+		CycleGraph cyclegraph = new CycleGraph(n);
+		cyclegraph.buildGraph();
+		int[][] graphMatrix = cyclegraph.getMatrix();
+		
 		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> saveInput = fm.copyFieldMatrix(graphMatrix, n);
@@ -1018,7 +1125,10 @@ public class PGB_AlgorithmTests {
 			BigFraction posEdge = cs.posEdge(n);
 			BigFraction negEdge = cs.negEdge(n);
 	
-			int[][] graphMatrix = Graphs.lineGraph(n);
+			//int[][] graphMatrix = Graphs.lineGraph(n);
+			LineGraph linegraph = new LineGraph(n);
+			linegraph.buildGraph();
+			int[][] graphMatrix = linegraph.getMatrix();
 			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> saveInput = fm.copyFieldMatrix(graphMatrix, n);
@@ -1079,7 +1189,10 @@ public class PGB_AlgorithmTests {
 		BigFraction negEdge = cs.negEdge(n);
 		
 		
-		int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+		AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+		alternatinglinegraph.buildGraph();
+		int[][] graphMatrix = alternatinglinegraph.getMatrix();
 		
 		FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 		FieldMatrix<BigFraction> saveInput = fm.copyFieldMatrix(graphMatrix, n);
@@ -1149,7 +1262,10 @@ public class PGB_AlgorithmTests {
 			BigFraction negEdge = cs.negEdge(n);
 			
 			
-			int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+			//int[][] graphMatrix = Graphs.alternatingLineGraph(n);
+			AlternatingLineGraph alternatinglinegraph = new AlternatingLineGraph(n);
+			alternatinglinegraph.buildGraph();
+			int[][] graphMatrix = alternatinglinegraph.getMatrix();	
 			
 			FieldMatrix<BigFraction> P1 = fm.copyFieldMatrix(graphMatrix, n);
 			FieldMatrix<BigFraction> saveInput = fm.copyFieldMatrix(graphMatrix, n);
@@ -1192,9 +1308,4 @@ public class PGB_AlgorithmTests {
 			}
 		}
 	}
-	
-
-	
-	
-	
 }

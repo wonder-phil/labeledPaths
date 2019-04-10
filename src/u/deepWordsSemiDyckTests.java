@@ -10,7 +10,7 @@ import g.AncillaryFunctions;
 import g.FieldMatrices;
 import g.Graphs;
 import g.PGB_Algorithm;
-
+import g.bigLittleGraph;
 
 
 public class deepWordsSemiDyckTests {
@@ -37,7 +37,10 @@ public class deepWordsSemiDyckTests {
 		int m = 3;
 		BigFraction one = new BigFraction(1,1);
 		
-		int[][] graphMatrix = Graphs.bigLittleGraph(n,m);
+		//int[][] graphMatrix = Graphs.bigLittleGraph(n,m);
+	    bigLittleGraph biglittlegraph = new bigLittleGraph(n,m);
+	    biglittlegraph.buildGraph();
+	    int[][] graphMatrix = biglittlegraph.getMatrix();
 		
 		FieldMatrices fm = new FieldMatrices();
 		AncillaryFunctions af = new AncillaryFunctions();
@@ -101,7 +104,10 @@ public class deepWordsSemiDyckTests {
 		int m = 5;
 		BigFraction one = new BigFraction(1,1);
 		
-		int[][] graphMatrix = Graphs.bigLittleGraph(n,m);
+		//int[][] graphMatrix = Graphs.bigLittleGraph(n,m);
+		bigLittleGraph biglittlegraph = new bigLittleGraph(n,m); 
+		biglittlegraph.buildGraph();
+		int[][] graphMatrix = biglittlegraph.getMatrix();
 		
 		FieldMatrices fm = new FieldMatrices();
 		AncillaryFunctions af = new AncillaryFunctions();
@@ -170,8 +176,11 @@ public class deepWordsSemiDyckTests {
 		int m = 3;
 		BigFraction one = new BigFraction(1,1);
 		
-		int[][] graphMatrix = Graphs.bigLittleGraph(n,m);
-		
+		//int[][] graphMatrix = Graphs.bigLittleGraph(n,m);
+		bigLittleGraph biglittlegraph = new bigLittleGraph(n,m); 
+		biglittlegraph.buildGraph();
+		int[][] graphMatrix = biglittlegraph.getMatrix();
+				
 		FieldMatrices fm = new FieldMatrices();
 		AncillaryFunctions af = new AncillaryFunctions();
 		PGB_Algorithm pgb_a = new PGB_Algorithm();
