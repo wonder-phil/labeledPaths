@@ -26,3 +26,7 @@
 /CycleGraphXX.class
 /BasicCycleGraph.class
 /dyckSamama.class
+/WorstCaseSemiDyck.class
+/NonSemiDyckGraph.class
+/SemiDyck3Graph.class
+/BasicSemiDyck3PlusGraph.class
